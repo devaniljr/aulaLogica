@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+
+<style>
+#container {
+	margin: auto;
+	width: 30%;
+	border: solid 1px grey;
+	padding: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+	<form id="formulario">
+		<h3>Qual a nota do primeiro bimestre?</h3>
+		<input id="number1" type="number" />
+		<h3>Qual a nota do segundo bimestre?</h3>
+		<input id="number2" type="number" />
+		<h3>Qual a taxa de frequência?</h3>
+		<input id="frequencia" type="number" />
+		<br /><br />
+		<button id="enviar">Calcular a média</button>
+	</form>
+
+	<p id="resultado" />
+</div>
+
+<script>
+	const elementButton = document.querySelector('#enviar').addEventListener('click', (event) => {
+		event.preventDefault()
+		const elementNumber1 = document.querySelector('#number1').value
+		const elementNumber2 = document.querySelector('#number2').value
+			
+		const resultado = (Number(elementNumber1) + Number(elementNumber2)) / 2
+					
+		const elementResultado = document.querySelector('#resultado')
+		const elementFrequencia = Number(document.querySelector('#frequencia').value)
+		console.log(elementFrequencia)
+
+		if (elementFrequencia >= 75 && resultado >= 60) {
+			console.log(typeof elementFrequencia, typeof resultado)
+			elementResultado.innerHTML = `A sua média é: ${resultado} \n Você está APROVADO!`
+		} else {
+			elementResultado.innerHTML = `Você está REPROVADO! :(
+			Infelizmente os requisitos para a aprovação não foram cumpridos.
+			A média mínima é de 60, a sua é ${resultado}. A frequência mínima é de 75%, a sua é de ${elementFrequencia}`
+		}
+	})	
+	
+</script>
+
+</body>
